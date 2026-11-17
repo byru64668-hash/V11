@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#68182d">
+  <meta name="description" content="SchoolTrack EAPIHS Offline School Inventory System">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/schooltrack-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>SchoolTrack EAPIHS</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/schooltrack-icon.png" alt="SchoolTrack EAPIHS logo" width="144" height="144">
+      <div><h1>SchoolTrack</h1><span class="school-tag">EAPIHS</span><p>Offline School Inventory • EAPIHS<br>School Use Only</p></div>
+    </div>
+    <div class="top-actions">
+      <button id="roleButton" class="icon-btn" title="Account role">G</button>
+      <button id="soundButton" class="icon-btn" title="Sound on/off">🔊</button>
+      <button id="themeButton" class="icon-btn" title="Switch mode">🌙</button>
+      <button id="menuButton" class="icon-btn" title="More options">⋮</button>
+      <div id="topDropdown" class="dropdown hidden">
+        <button data-nav="account">Account</button>
+        <button id="installButton">Install app</button>
+        <button id="exportButton">Export backup</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="appMain">
+    <section id="homePage" class="page active">
+      <div class="stats-grid">
+        <article class="stat-card wine"><div class="stat-top"><span class="stat-icon">📦</span><strong id="totalCount">0</strong></div><span>TOTAL</span></article>
+        <article class="stat-card green"><div class="stat-top"><span class="stat-icon">✅</span><strong id="availableCount">0</strong></div><span>AVAILABLE</span></article>
+        <article class="stat-card green"><div class="stat-top"><span class="stat-icon">🤝</span><strong id="borrowedCount">0</strong></div><span>BORROWED</span></article>
+        <article class="stat-card wine"><div class="stat-top"><span class="stat-icon">🛠️</span><strong id="repairCount">0</strong></div><span>REPAIR</span></article>
+        <article class="stat-card green"><div class="stat-top"><span class="stat-icon">⚠️</span><strong id="missingCount">0</strong></div><span>MISSING</span></article>
+      </div>
+      <div id="stockNotice" class="notice"><b>✓　Stock status</b><span>Stock status updates automatically.</span></div>
+      <div class="home-actions">
+        <button class="tile green-bg" data-nav="inventory">📦 Inventory</button>
+        <button class="tile wine-bg admin-only" data-nav="add">➕ Add Item</button>
+        <button class="tile green-bg" data-nav="reports">📝 Reports</button>
+        <button class="tile wine-bg" data-nav="feedback">⭐ Feedback</button>
+        <button class="tile green-bg" data-nav="history">🕒 History &amp; Backup</button>
+        <button class="tile wine-bg" id="quickBackupButton">💾 Quick Backup</button>
+      </div>
+    </section>
+
+    <section id="inventoryPage" class="page">
+      <div class="section-head"><h2>📦 Inventory</h2><input id="inventorySearch" placeholder="Search items..."></div>
+      <div class="filter-row">
+        <select id="categoryFilter"><option value="">All categories</option><option>ICT Equipment</option><option>Furniture</option><option>Electrical</option><option>School Supplies</option><option>Other</option></select>
+        <select id="conditionFilter"><option value="">All conditions</option><option>Good</option><option>For Repair</option><option>Missing</option></select>
+      </div>
+      <div id="inventoryList" class="item-list"></div>
+    </section>
+
+    <section id="addPage" class="page">
+      <h2>➕ Add Inventory Item</h2>
+      <form id="itemForm" class="panel">
+        <label>Item name<input name="name" required maxlength="80" placeholder="e.g. Desktop Computer"></label>
+        <label>Category<select name="category" required><option value="">Choose category</option><option>ICT Equipment</option><option>Furniture</option><option>Electrical</option><option>School Supplies</option><option>Other</option></select></label>
+        <div class="two-col">
+          <label>Quantity<input name="quantity" type="number" min="1" step="1" required value="1"></label>
+          <label>Condition<select name="condition"><option>Good</option><option>For Repair</option><option>Missing</option></select></label>
+        </div>
+        <label>Location<input name="location" placeholder="e.g. ICT Laboratory"></label>
+        <label>Person responsible<input name="responsible" placeholder="Name or position"></label>
+        <label>Notes<textarea name="notes" rows="3" placeholder="Optional details"></textarea></label>
+        <button class="primary-btn" type="submit">Save Item</button>
+        <p class="hint">Adding and editing items is available to Admin only.</p>
+      </form>
+    </section>
+
+    <section id="reportsPage" class="page">
+      <h2>📝 Reports</h2>
+      <div class="panel">
+        <p>Inventory summary and item status report.</p>
+        <div id="reportSummary" class="report-summary"></div>
+        <button id="reportExport" class="primary-btn">Download CSV Report</button>
+      </div>
+      <div class="panel"><h3>Report a facility or equipment concern</h3>
+        <form id="reportForm">
+          <label>Concern<select name="category"><option>Computer</option><option>Electric fan</option><option>Ilaw</option><option>Chair/table</option><option>TV</option><option>Other</option></select></label>
+          <label>Description<textarea name="description" required rows="3"></textarea></label>
+          <button class="primary-btn">Submit Report</button>
+        </form>
+      </div>
+      <div id="reportsList" class="item-list"></div>
+    </section>
+
+    <section id="feedbackPage" class="page">
+      <h2>⭐ Feedback</h2>
+      <form id="feedbackForm" class="panel">
+        <label>Rating<select name="rating"><option value="5">5 - Excellent</option><option value="4">4 - Very Good</option><option value="3">3 - Good</option><option value="2">2 - Fair</option><option value="1">1 - Needs Improvement</option></select></label>
+        <label>Comments<textarea name="comments" rows="4" placeholder="Share your feedback..." required></textarea></label>
+        <button class="primary-btn">Send Feedback</button>
+      </form>
+      <div id="feedbackList" class="item-list"></div>
+    </section>
+
+    <section id="historyPage" class="page">
+      <h2>🕒 History &amp; Backup</h2>
+      <div class="panel">
+        <p>Recent inventory activities appear below.</p>
+        <button id="historyBackup" class="primary-btn">Export Backup</button>
+        <label class="file-label">Restore backup (Admin only)<input id="restoreFile" type="file" accept="application/json"></label>
+      </div>
+      <div id="historyList" class="item-list"></div>
+    </section>
+
+    <section id="accountPage" class="page">
+      <h2>👤 Account</h2>
+      <div class="panel">
+        <p id="accountStatus">Connecting...</p>
+        <label>Admin email<input id="adminEmail" type="email" autocomplete="username" placeholder="admin@example.com"></label>
+        <label>Admin password<input id="adminPassword" type="password" autocomplete="current-password" placeholder="Password"></label>
+        <button id="adminLogin" class="primary-btn">Sign in as Admin</button>
+        <button id="guestButton" class="secondary-btn">Continue as Guest</button>
+        <button id="signOutButton" class="secondary-btn">Sign out</button>
+        <p class="hint">Guest access is read-only. Admin access must be granted securely in Firebase by the project owner.</p>
+      </div>
+      <div class="panel"><h3>App settings</h3><button id="accountTheme" class="secondary-btn">Switch Light / Dark Mode</button><button id="accountSound" class="secondary-btn">Toggle Click Sounds</button></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn selected" data-nav="home"><span>🏠</span>Home</button>
+    <button class="nav-btn" data-nav="inventory"><span>📦</span>Inventory</button>
+    <button class="nav-btn admin-only" data-nav="add"><span>➕</span>Add</button>
+    <button class="nav-btn" data-nav="reports"><span>📝</span>Reports</button>
+    <button class="nav-btn" data-nav="feedback"><span>⭐</span>Feedback</button>
+    <button class="nav-btn" data-nav="history"><span>🕒</span>History</button>
+    <button class="nav-btn" data-nav="account"><span>👤</span>Account</button>
+  </nav>
+
+  <dialog id="itemDialog">
+    <form method="dialog" class="dialog-inner">
+      <h3 id="dialogTitle">Item</h3>
+      <div id="dialogBody"></div>
+      <button class="secondary-btn">Close</button>
+    </form>
+  </dialog>
+  <div id="toast" role="status" class="toast hidden"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
