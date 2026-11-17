@@ -1,0 +1,39 @@
+:root{--wine:#68182d;--wine2:#7a1c35;--green:#15583d;--green2:#0d432e;--cream:#f4f5ed;--card:#fff;--ink:#18372b;--muted:#68756d;--line:#d9e0d9;--shadow:0 5px 18px #18372b12}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:"Times New Roman",Times,serif;padding-bottom:78px}
+body.dark{--cream:#14251e;--card:#20372d;--ink:#f2f5ef;--muted:#bdc9c0;--line:#385346;--shadow:0 5px 18px #0003}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:5;background:linear-gradient(110deg,#68182d 0%,#54172b 55%,#0d432e 100%);color:#fff;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:210px;box-shadow:0 3px 12px #0002}
+.brand{display:flex;align-items:center;gap:22px;min-width:0;flex:1}.brand img{width:144px;height:144px;flex:0 0 144px;border-radius:30px;object-fit:cover;object-position:center;border:4px solid #ffffffb8;box-shadow:0 5px 16px #0005;background:#fff}.brand h1{font-size:clamp(34px,4.3vw,58px);line-height:1.02;margin:0 0 12px;font-weight:700;letter-spacing:.2px}.brand p{font-size:clamp(16px,1.7vw,25px);line-height:1.35;margin:16px 0 0;color:#f7eeee}.school-tag{display:inline-block;background:#fff;color:var(--wine);font-weight:900;font-size:clamp(15px,1.5vw,22px);letter-spacing:2px;border-radius:28px;padding:9px 25px}
+.top-actions{display:flex;gap:12px;position:relative;align-items:center;flex-shrink:0}.icon-btn{width:82px;height:82px;border:2px solid #ffffff66;border-radius:27px;background:#ffffff16;color:white;font-size:36px;box-shadow:inset 0 0 12px #ffffff08}.dropdown{position:absolute;right:0;top:56px;background:var(--card);color:var(--ink);border-radius:12px;box-shadow:var(--shadow);min-width:170px;padding:7px}.dropdown button{display:block;width:100%;border:0;background:transparent;color:inherit;text-align:left;padding:12px;border-radius:8px}.dropdown button:active{background:var(--line)}
+main{max-width:900px;margin:auto;padding:18px 16px 25px}.page{display:none}.page.active{display:block}h2{font-size:23px;margin:8px 0 18px}h3{margin-top:0}
+.stats-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stat-card{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--green);border-radius:19px;padding:12px 15px;min-height:88px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;gap:5px}.stat-card.wine{border-left-color:var(--wine)}.stat-top{display:flex;align-items:center;gap:10px}.stat-icon{font-size:23px;line-height:1}.stat-card strong{font-size:31px;line-height:1;color:var(--green)}.dark .stat-card strong{color:#80d1a7}.stat-card>span{font-weight:850;color:var(--muted);letter-spacing:.4px;font-size:12px}
+.notice{margin:20px 0 26px;padding:18px;border:1px solid #c7d9ce;border-radius:24px;background:#e3efe6;color:#174a35;display:flex;align-items:center;gap:16px}.dark .notice{background:#294638;color:#e3f1e8;border-color:#456754}.notice b{font-size:18px;min-width:125px}.notice span{color:inherit;opacity:.8}
+.home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tile{border:0;border-radius:21px;color:white;text-align:left;font-weight:850;font-size:19px;padding:23px 18px;min-height:82px;box-shadow:0 5px 0 #0002}.green-bg{background:var(--green)}.wine-bg{background:var(--wine)}.tile:active,.primary-btn:active,.nav-btn:active{transform:translateY(2px)}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.section-head input{max-width:55%}.filter-row,.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.panel,.item-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:17px;margin:12px 0;box-shadow:var(--shadow)}
+label{display:block;font-size:14px;font-weight:700;margin:12px 0;color:var(--muted)}input,select,textarea{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--cream);color:var(--ink);outline:none}textarea{resize:vertical}
+.primary-btn,.secondary-btn{border:0;border-radius:13px;padding:13px 16px;font-weight:800;width:100%;margin-top:10px}.primary-btn{background:var(--green);color:white}.secondary-btn{background:var(--line);color:var(--ink)}
+.hint{font-size:12px;color:var(--muted);line-height:1.45}.item-card h3{margin:0 0 7px}.item-meta{font-size:13px;color:var(--muted);line-height:1.6}.item-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.item-actions button{border:0;border-radius:10px;padding:9px 11px;background:var(--line);color:var(--ink);font-weight:700}.pill{display:inline-block;border-radius:99px;padding:4px 9px;background:#e5efe8;color:#16583c;font-size:11px;font-weight:850}.dark .pill{background:#355644;color:#d8f4e3}
+.report-summary{display:grid;grid-template-columns:1fr 1fr;gap:8px}.report-summary div{background:var(--cream);border-radius:12px;padding:12px}.file-label input{padding:8px}.bottom-nav{position:fixed;z-index:10;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:var(--green2);padding:8px 2px calc(8px + env(safe-area-inset-bottom));border-top:4px solid var(--wine);box-shadow:0 -4px 12px #0002}.nav-btn{flex:1;min-width:0;background:none;border:0;color:#f3f6f0;font-size:11px;font-weight:750;display:flex;flex-direction:column;align-items:center;gap:2px;padding:2px 0}.nav-btn span{font-size:22px}.nav-btn.selected{color:#ffe15a}
+dialog{border:0;border-radius:20px;max-width:460px;width:calc(100% - 28px);background:var(--card);color:var(--ink);box-shadow:0 20px 60px #0005}dialog::backdrop{background:#0007}.dialog-inner{padding:18px}.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#182b22;color:white;padding:12px 18px;border-radius:12px;z-index:20;box-shadow:var(--shadow);max-width:90%;text-align:center}.hidden{display:none!important}
+@media(min-width:700px){.stats-grid{grid-template-columns:repeat(5,1fr)}.home-actions{grid-template-columns:repeat(3,1fr)}main{padding-top:28px}.brand h1{font-size:26px}}
+@media(max-width:700px){
+.topbar{padding:14px 12px 16px;min-height:0;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.brand{gap:11px;align-items:flex-start;flex:1 1 100%;}
+.brand img{width:76px;height:76px;flex-basis:76px;border-radius:19px;border-width:3px}
+.brand h1{font-size:30px;margin:2px 0 7px;line-height:1.05}
+.brand p{font-size:14px;line-height:1.25;margin:9px 0 0}
+.school-tag{font-size:13px;letter-spacing:1.4px;padding:5px 15px;border-radius:18px}
+.top-actions{width:100%;justify-content:flex-end;gap:8px}
+.icon-btn{width:54px;height:52px;border-radius:17px;font-size:25px}
+.dropdown{top:58px}
+.nav-btn{font-size:9px}.nav-btn span{font-size:20px}.tile{font-size:16px;padding:18px 12px}
+}
+@media(max-width:380px){.brand img{width:66px;height:66px;flex-basis:66px}.brand h1{font-size:26px}.brand p{font-size:12px}.icon-btn{width:48px;height:48px;font-size:22px}}
+
+
+/* Compact dashboard cards and clear icon spacing */
+@media(max-width:420px){.stats-grid{gap:9px}.stat-card{min-height:82px;padding:10px 12px;border-radius:16px}.stat-card strong{font-size:28px}.stat-icon{font-size:20px}.stat-card>span{font-size:10px}}
+
+/* Reference-style SchoolTrack logo banner */
+.brand>div{min-width:0}
